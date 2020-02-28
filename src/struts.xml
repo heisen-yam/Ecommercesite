@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 決まり文句です。-->
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<!-- struts.xmlとはstrutsフレームワークを利用する際に作成する設定ファイルです
+javaの処理結果に応じて表示する画面ファイルJSPファイルの設定を記述します。strutsフレームワークのみで利用される設定ファイルです-->
+
+<!-- このプロジェクトで使うActionファイルが保存されているパッケージを宣言します -->
+<struts>
+<!-- struts2の挙動を制御する設定です。name:設定名 value:設定値を記述 -->
+	<constant name="struts.devMode" value="true"/>
+	<package name="com.internousdev.ecsite.action" extends="struts-default">
+
+<!-- このプロジェクトで使うActionファイルが保存されているパッケージを宣言します -->
+	<action name="GoHomeAction" class="com.internousdev.ecsite.action.GoHomeAction" method="execute">
+	<!-- execute()メソッドから返ってきた値によって次に遷移するJSPを振り分けます -->
+	<result name="success">home.jsp</result>
+	</action>
+
+	<action name="HomeAction" class="com.internousdev.ecsite.action.HomeAction" method="execute">
+	<result name="login">login.jsp</result>
+	<result name="success">buyItem.jsp</result>
+	</action>
+
+	<action name="LoginAction" class="com.internousdev.ecsite.action.LoginAction" method="execute">
+	<result name="success">buyItem.jsp</result>
+	<result name="error">login.jsp</result>
+	</action>
+
+	<action name="UserCreateAction" class="com.internousdev.ecsite.action.UserCreateAction" method="execute">
+	<result name="success">userCreate.jsp</result>
+	</action>
+
+	<action name="UserCreateConfirmAction" class="com.internousdev.ecsite.action.UserCreateConfirmAction" method="execute">
+	<result name="success">userCreateConfirm.jsp</result>
+	<result name="error">userCreate.jsp</result>
+	</action>
+
+	<action name="UserCreateCompleteAction" class="com.internousdev.ecsite.action.UserCreateCompleteAction" method="execute">
+	<result name="success">userCreateComplete.jsp</result>
+	</action>
+
+	<action name="BuyItemAction" class="com.internousdev.ecsite.action.BuyItemAction" method="execute">
+	<result name="success">buyItemConfirm.jsp</result>
+	</action>
+
+	<action name="BuyItemConfirmAction" class="com.internousdev.ecsite.action.BuyItemConfirmAction" method="execute">
+	<result name="success">buyItemComplete.jsp</result>
+	</action>
+
+	<action name="MyPageAction" class="com.internousdev.ecsite.action.MyPageAction" method="execute">
+	<result name="success">myPage.jsp</result>
+	<result name="error">home.jsp</result>
+	</action>
+
+	<action name="LogoutAction" class="com.internousdev.ecsite.action.LogoutAction" method="execute">
+	<result name="success">home.jsp</result>
+	</action>
+
+	</package>
+</struts>
+<!-- MVCモデル Model:処理(Action/DAO/DTO) View:画面(JSP) 自分で作成
+フロントサイドで画面ファイル(JSP) サーバーサイド(Action/DAO/DTO、データベース（DAOから）
+Controller:司令塔(struts2のクラス群)strutsが提供 -->

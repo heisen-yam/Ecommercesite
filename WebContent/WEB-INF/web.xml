@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
+ <!-- プロジェクト名を記述します -->
+  <display-name>ecsite</display-name>
+  <welcome-file-list>
+     <welcome-file>home.jsp</welcome-file>
+  </welcome-file-list>
+
+<!-- このプロジェクト全体でstruts2を使います的な意味 -->
+  <filter>
+  	<filter-name>struts2</filter-name>
+  	<filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
+  </filter>
+
+  <filter-mapping>
+  	<filter-name>struts2</filter-name>
+  	<url-pattern>/*</url-pattern><!-- 適用する範囲URL（固定）このプロジェクト配下/の全てのページを表す -->
+  </filter-mapping>
+</web-app>
+<!-- filterタグとfilter-mappingタグ両方にあるfilter-nameタグに同じ名前(struts2)を指定することで、
+filter-classの設定とurl-patternの設定が結びつきます -->
+
+<!-- web.xmlは動的webプロジェクトにおいて、画面を表示するための設定ファイルです-->
+<!-- welcome-file-list内に定義すると、ファイル名なしで直属ディレクトリのみのURLを設定した場合にも表示されます（複数指定された場合は上から順に -->
+<!--サイトへアクセスする際最初に表示する画面ファイル（JSPファイルやプロジェクトでStruts2を利用することを示す設定を記述
+strutsフレームワーク以外でも利用される設定ファイルです-->
